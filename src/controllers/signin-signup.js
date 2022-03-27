@@ -9,6 +9,12 @@ const hashPassword = (password) => {
     return bcrypt.hashSync(password, 8);
 }
 
+function getToken(user){
+  return jwt.sign({id: user._id}, authConfig.secret, {
+    expiresIn: authConfig.oneDay
+  });
+}
+
 module.exports.signup = (req, res) => {
     let email = req.body.email;
     let password = hashPassword(req.body.password);
@@ -28,10 +34,20 @@ module.exports.signup = (req, res) => {
         console.log(err);
         return;
       }
+
+      let token = getToken(user);
   
-      let msg = {message: MESSAGES.CREATED};
+      let vals = {
+        message: MESSAGES.CREATED,
+        id: user._id,
+        username: user.username,
+        email: user.email,
+        rooms: user.rooms,
+        accessToken: token,
+      };
+
       console.log(MESSAGES.CREATED);
-      res.status(200).send(msg);
+      res.status(200).send(vals);
     }); 
   }
   
@@ -64,9 +80,7 @@ module.exports.signin = async(req, res) => {
         });
       }
       
-      let token = jwt.sign({id: user._id}, authConfig.secret, {
-        expiresIn: authConfig.oneDay
-      });
+      let token = getToken(user);
       
       let vals = {
         message: MESSAGES.LOGGED_IN,
@@ -100,3 +114,7 @@ module.exports.checkDuplicatedEmail = (req, res, next) => {
         next();
     });
 };
+
+module.exports.logout = async(req, res) => {
+  //If required fill up later
+}

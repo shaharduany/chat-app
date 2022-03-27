@@ -4,7 +4,10 @@ const session = require("express-session");
 const authConfig = require('../config/auth-config');
 const cors = require("cors");
 const ROUTES = require("./routes");
-const { signin, signup, checkDuplicatedEmail } = require("./controllers/signin-signup");
+const { signin, signup, checkDuplicatedEmail, logout } = require("./controllers/signin-signup");
+const { authJwt } = require("./middleware/auth-jwt");
+const { verify } = require("jsonwebtoken");
+const { getChats } = require("./controllers/chats");
 
 class Server{
     constructor(){
@@ -42,8 +45,12 @@ class Server{
     }
 
     routes() {
-        this.app.post(ROUTES.signin, signin);
-        this.app.post(ROUTES.signup, checkDuplicatedEmail, signup);
+        this.app.post(ROUTES.SIGN_IN, signin);
+        this.app.post(ROUTES.SIGN_UP, checkDuplicatedEmail, signup);
+        this.app.post(ROUTES.LOGOUT,authJwt.isUser, authJwt.verifyToken, logout)
+    
+        this.app.get(ROUTES.CHATS, authJwt.isUser, authJwt.verifyToken, getChats);
+        
     }
 
     listen(){

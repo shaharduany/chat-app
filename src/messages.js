@@ -7,6 +7,7 @@ const MESSAGES = {
     TOKEN_NOT_FOUND: "Token not found",
     UNAUTHERIZED: "Unauthorized!",
     EMAIL_IN_USE: "email already in use",
+    LOGIN_AGAIN: "You must login again",
 }
 
 module.exports = MESSAGES;

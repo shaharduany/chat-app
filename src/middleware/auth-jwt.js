@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 const authConfig = require("../../config/auth-config");
 const MESSAGES = require('../messages');
+const User = require("../models/User");
 
 const verifyToken = async(req, res, next) => {
     let token = req.headers["x-access-token"];
@@ -12,7 +13,7 @@ const verifyToken = async(req, res, next) => {
 
     jwt.verify(token, authConfig.secret, (err, decoded) => {
         if (err) {
-          return res.status(401).send({ message: MESSAGES.UNAUTHERIZED });
+          return res.status(401).send({ message: MESSAGES.LOGIN_AGAIN});
         }
         req.userId = decoded.id;
         next();
@@ -21,9 +22,16 @@ const verifyToken = async(req, res, next) => {
 
 const isUser = async(req, res, next) => {
     const email = req.body.email;
-    //you may need it later
+    const user = await User.findOne({email: email});
+    if(user){
+        next();
+    } else {
+        res.status(404).send({message: MESSAGES.NOT_FOUND});
+        return;
+    }
 }
 
 module.exports.authJwt = {
     verifyToken,
+    isUser,
 }

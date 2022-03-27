@@ -1,7 +1,10 @@
 const ROUTES = {
-    homepage: "/api/homepage",
-    signin: "/api/login",
-    signup: "/api/signup",
+    HOMEPAGE: "/api/homepage",
+    SIGN_IN: "/api/signin",
+    SIGN_UP: "/api/signup",
+    LOGOUT: "/api/logout",
+    CHATS: "/chat/:name",
+
 }
 
 module.exports = ROUTES;
