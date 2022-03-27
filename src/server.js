@@ -3,6 +3,8 @@ const express = require("express");
 const session = require("express-session");
 const authConfig = require('../config/auth-config');
 const cors = require("cors");
+const ROUTES = require("./routes");
+const { signin, signup, checkDuplicatedEmail } = require("./controllers/signin-signup");
 
 class Server{
     constructor(){
@@ -27,12 +29,12 @@ class Server{
         this.app.use(cors()); // Enable CORS
 
 
-    this.app.use(session({
-        secret: authConfig.secret,
-        saveUninitialized: true,
-        cookie: { maxAge: authConfig.oneDay, httpOnly: true },
-        resave: false,
-    }));
+        this.app.use(session({
+            secret: authConfig.secret,
+            saveUninitialized: true,
+            cookie: { maxAge: authConfig.oneDay, httpOnly: true },
+            resave: false,
+        }));
 
         this.app.use(express.json());
         this.app.use(express.urlencoded({ extended: true }));
@@ -40,7 +42,8 @@ class Server{
     }
 
     routes() {
-        
+        this.app.post(ROUTES.signin, signin);
+        this.app.post(ROUTES.signup, checkDuplicatedEmail, signup);
     }
 
     listen(){
