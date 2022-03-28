@@ -4,13 +4,12 @@
 
 ## To-do:
 ### Back-end:
-1. Build getChats route
-2. Build post message route
-3. Extend use of user's access token after posting or getting items
+1. Build post message route
+2. Extend use of user's access token after posting or getting items
 
 ### Front-endP
 1. Build all the views
-2. Build API's for the chat, getchat and post message
+2. Build API's for the chat: getroom. searchRoom, joinRoom  and post message
 
 ## Libraries:
 1. Express
