@@ -8,6 +8,8 @@ const MESSAGES = {
     UNAUTHERIZED: "Unauthorized!",
     EMAIL_IN_USE: "email already in use",
     LOGIN_AGAIN: "You must login again",
+    ROOMS_NOT_FOUND: "Couldn't find any rooms",
+    PROCESSED: "Processed successfully",
 }
 
 module.exports = MESSAGES;

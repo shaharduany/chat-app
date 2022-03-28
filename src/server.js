@@ -7,7 +7,7 @@ const ROUTES = require("./routes");
 const { signin, signup, checkDuplicatedEmail, logout } = require("./controllers/signin-signup");
 const { authJwt } = require("./middleware/auth-jwt");
 const { verify } = require("jsonwebtoken");
-const { getChats } = require("./controllers/chats");
+const { getChats, searchRoom, addToRoom } = require("./controllers/chats");
 
 class Server{
     constructor(){
@@ -48,8 +48,9 @@ class Server{
         this.app.post(ROUTES.SIGN_IN, signin);
         this.app.post(ROUTES.SIGN_UP, checkDuplicatedEmail, signup);
         this.app.post(ROUTES.LOGOUT,authJwt.isUser, authJwt.verifyToken, logout)
-    
-        this.app.get(ROUTES.CHATS, authJwt.isUser, authJwt.verifyToken, getChats);
+        this.app.post(ROUTES.GET_ROOMS, authJwt.isUser, authJwt.verifyToken, getChats);
+        this.app.post(ROUTES.SEARCH_ROOM, searchRoom);
+        this.app.post(ROUTES.JOIN_ROOM, authJwt.verifyToken, authJwt.isUser, addToRoom);
         
     }
 
