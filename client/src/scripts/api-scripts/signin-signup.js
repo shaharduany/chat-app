@@ -36,7 +36,7 @@ export async function signup(email, password, username) {
         username: username,
     }
 
-    const res = await axios.post(ROUTES.SIGN_UP, vals, {headers: HEADERS});
+    const res = await axios.post(ROUTES.SIGN_UP, values, {headers: HEADERS});
     
     if(okRespomnse(res)){
         assignUser(res);
@@ -57,7 +57,7 @@ export async function logout() {
             accessToken: user.accessToken,
         }
 
-        const res = await axios.post(API.LOGOUT, vals, {headers: HEADERS});
+        const res = await axios.post(ROUTES.LOGOUT, vals, {headers: HEADERS});
 
         localStorage.removeItem(ITEM_NAME);
         return res.status;

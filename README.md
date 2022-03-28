@@ -19,3 +19,4 @@
 5. Bcrypt
 6. React
 7. Axios
+8. Reduxnpm i
