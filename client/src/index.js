@@ -5,11 +5,10 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {Provider } from 'react-redux';
 import { createStore } from 'redux';
-import userApp from './store/user/user';
+import rootStore from './store/root-store';
 
 
-
-const store = createStore(userApp);
+const store = createStore(rootStore);
 
 
 ReactDOM.render(

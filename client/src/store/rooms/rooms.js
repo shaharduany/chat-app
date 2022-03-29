@@ -1,5 +1,3 @@
-import { combineReducers } from "redux";
-
 const ADD_ROOM = "ADD_ROOM";
 const LEAVE_ROOM = "LEAVE_ROOM";
 
@@ -31,11 +29,10 @@ function rooms(state = defaultRooms, action){
             }];
         case LEAVE_ROOM:
             //Fill it up later
+            break;
         default:
             return state;
     }
 }
 
-const roomsApp = combineReducers({rooms});
-
-export default roomsApp;
+export default rooms;

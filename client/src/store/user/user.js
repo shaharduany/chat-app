@@ -1,4 +1,3 @@
-import { combineReducers } from "redux";
 import { logout } from "../../scripts/api-scripts/signin-signup";
 
 const ADD_USER = "ADD_USER";
@@ -36,6 +35,4 @@ function user(state = defaultUser, action){
     }
 }
 
-const userApp = combineReducers({user});
-
-export default userApp;
+export default user;
