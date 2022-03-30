@@ -6,6 +6,7 @@
 ### Back-end:
 1. Build post message route
 2. Extend use of user's access token after posting or getting items
+3. Add a getter for room messages
 
 ### Front-endP
 1. Build all the views
@@ -19,4 +20,5 @@
 5. Bcrypt
 6. React
 7. Axios
-8. Reduxnpm i
+8. Redux
+9. Bootstrap
