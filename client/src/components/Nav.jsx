@@ -13,24 +13,27 @@ export default function Header(props){
     console.log("user two");
     console.log(user);
 
-    return (<div className='nav-div' style={style.nav}>
-        <Navbar sticky='top' style={style.nav}>
+    return (<div className='nav-div' style={style.navDiv}>
+        <Navbar variant='dark' bg='dark' style={styles.nav}
+        className="justify-content-center">
             <NavbarBrand>CHATAPP</NavbarBrand>
-            <Nav.Link
-            href={PATHS.homepage}
-            >
-                HOME
-            </Nav.Link>
-            <Nav.Link
-            href={PATHS.join}
-            >
-                JOIN US
-            </Nav.Link>
-            <Nav.Link
-            href={PATHS.main}
-            >
-                ROOMS
-            </Nav.Link>
+            <Nav>
+                <Nav.Link
+                href={PATHS.homepage}
+                >
+                    HOME
+                </Nav.Link>
+                <Nav.Link
+                href={PATHS.join}
+                >
+                    JOIN US
+                </Nav.Link>
+                <Nav.Link
+                href={PATHS.main}
+                >
+                    ROOMS
+                </Nav.Link>
+            </Nav>
         </Navbar>
     </div>);
 }

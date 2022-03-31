@@ -6,21 +6,27 @@ export default function styles() {
     return {
         app: {
             fontFamily: FONT,
-            padding: PADDING,
             textAlign: "center",
         },
         footer: {
             backgroundColor: "darkgrey",
             color: "white",
+            position: "fixed",
+            bottom: "0px",
+            textAlign: "center",
+            height: "60px",
+            padding: "20px",
+
+            width: "100%",
         },
-        nav: {
-            display: "flex",
-            backgroundColor: "lightgreen",
-            margin: "auto",
+        nav:{
+            position: "fixed",
+            top: "10px",
+            width: "100%",
             padding: PADDING,
         },
         loginDiv: {
-            backgroundColor: "lightgrey",
+            backgroundColor: "lightgreen",
             textAlign: "center",
             padding: PADDING,
             margin: "auto",
@@ -31,6 +37,13 @@ export default function styles() {
             textAlign: "center",
             margin: "auto",
             width: inputWidths,
+        },
+        loginLeftButton: {
+            textAlign: "start",
+            marginRight: "20px",
+        },
+        loginRightBottom: {
+            textAlign: "end",
         },
         registerDiv: {
             backgroundColor: "lightgreen",

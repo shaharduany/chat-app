@@ -25,20 +25,17 @@ export default function Login (props){
                 />
             </InputGroup>
             <br />
-            <>
-                <Row>
-                    <Col>
-                        <Button variant="primary">
-                            LOGIN
-                        </Button>
-                    </Col>
-                    <Col>
-                        <Button size='sm' variant='secondary'  >
-                            Forgot your password 
-                        </Button>
-                    </Col>
-                </Row>
-            </>
+            <div>
+                <Button variant="primary" size='sm' style={style.loginLeftButton}>
+                    LOGIN
+                </Button>
+                <Button 
+                size='sm' variant='secondary'
+                style={style.loginRightBottom}
+                >
+                    Forgot your password 
+                </Button>
+            </div>
         </Form>
 
     </div>);

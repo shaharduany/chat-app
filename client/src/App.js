@@ -23,20 +23,16 @@ function App() {
   return (
     <div className='app-wrapper' style={style.app}>
       <Router>
-        <Container>
-          <Header />
-          <Routes>
-            <Route exact path={PATHS.homepage} element={<h1>home page</h1>}></Route>
-            <Route exact path={PATHS.join} element={<JoinPage />}></Route> 
-            <Route exact path={PATHS.main} element={<MainPage />}></Route>
-          </Routes>
-        </Container>
+        <Header />
+        <Routes>
+          <Route exact path={PATHS.homepage} element={<h1>home page</h1>}></Route>
+          <Route exact path={PATHS.join} element={<JoinPage />}></Route> 
+          <Route exact path={PATHS.main} element={<MainPage />}></Route>
+        </Routes>
       </Router>
-      <div style={style.footer}>
-        <footer>
-          Credit: Shahar Duany
-        </footer>
-      </div>
+      <footer style={style.footer}>
+        credit: shahar duany
+      </footer>
     </div>
   );
 }
