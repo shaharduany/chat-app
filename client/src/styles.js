@@ -1,23 +1,47 @@
+const PADDING = "20px";
+const inputWidths = "80%";
+const FONT = "Merriweather";
+
 export default function styles() {
     return {
+        app: {
+            fontFamily: FONT,
+            padding: PADDING,
+            textAlign: "center",
+        },
+        footer: {
+            backgroundColor: "darkgrey",
+            color: "white",
+        },
+        nav: {
+            display: "flex",
+            backgroundColor: "lightgreen",
+            margin: "auto",
+            padding: PADDING,
+        },
         loginDiv: {
             backgroundColor: "lightgrey",
             textAlign: "center",
-            fontFamily: "Ariel",
+            padding: PADDING,
+            margin: "auto",
+            fontFamily: FONT,
         },
         loginInputs: {
-            padding: "20px",
+            padding: PADDING,
             textAlign: "center",
-            width: "70%",
+            margin: "auto",
+            width: inputWidths,
         },
         registerDiv: {
             backgroundColor: "lightgreen",
             textAlign: "center",
-            fontFamily: "Ariel",
+            fontFamily: FONT,
+            padding: PADDING,
         },
         registerInputs: {
-            padding: "20px",
-            width: "70%",
+            margin: "auto",
+            padding: PADDING,
+            width: inputWidths,
         },
     };
 }

@@ -7,7 +7,9 @@ export default function Login (props){
 
     return (<div style={style.loginDiv}>
         <h2>LOGIN</h2>
-        <Form style={style.loginInputs}> 
+        <Form style={style.loginInputs}
+        className="justify-content-center"
+        > 
             <InputGroup>
                 <InputGroup.Text>Email</InputGroup.Text>
                 <FormControl

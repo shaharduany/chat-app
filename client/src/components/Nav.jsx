@@ -1,30 +1,36 @@
 import React from 'react';
+import { Navbar, Nav, NavbarBrand } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
-import {Link} from 'react-router-dom';
+import paths from '../routes';
+import styles from '../styles';
 
-const styles = {
-    color: "white",
-    padding: 20,
-    backgroundColor: "darkred",
-    alignItems: "center",
-}
+const PATHS = paths();
 
-export default function Nav(props){
+export default function Header(props){
+    const style = styles();
+
     const user = useSelector(state => state.user);
     console.log("user two");
     console.log(user);
 
-    return (<div className='nav-div'>
-        <ul>
-            <Link to="/">
-                <li>HOME</li>
-            </Link>
-            <Link to="/join">
-                <li>JOIN US</li>
-            </Link>
-            <Link to="/main">
-                <li>Main</li>
-            </Link>
-        </ul>
+    return (<div className='nav-div' style={style.nav}>
+        <Navbar sticky='top' style={style.nav}>
+            <NavbarBrand>CHATAPP</NavbarBrand>
+            <Nav.Link
+            href={PATHS.homepage}
+            >
+                HOME
+            </Nav.Link>
+            <Nav.Link
+            href={PATHS.join}
+            >
+                JOIN US
+            </Nav.Link>
+            <Nav.Link
+            href={PATHS.main}
+            >
+                ROOMS
+            </Nav.Link>
+        </Navbar>
     </div>);
 }
