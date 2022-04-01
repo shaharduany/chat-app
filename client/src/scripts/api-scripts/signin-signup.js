@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { addUser } from '../../store/user/user';
 import getPaths from './api-paths';
 import authHeader from './auth-headers';
 
@@ -11,7 +12,17 @@ function okRespomnse(res){
 }
 
 function assignUser(response){
-    localStorage.setItem(ITEM_NAME, JSON.stringify(response.data.user));
+    const data = response.data;
+    const user = {
+        id: data.id,
+        email: data.email,
+        username: data.username,
+        rooms: data.rooms,
+    };
+
+    const token = data.accessToken;
+
+    return addUser(user, token);
 }
 
 export async function login(email, password){
@@ -21,12 +32,15 @@ export async function login(email, password){
     };
 
     const res = await axios.post(ROUTES.SIGN_IN, vals, {headers: HEADERS});
-    
+    let data = {
+        status: res.status,
+    };
+
     if(okRespomnse(res)){
-        assignUser(res);
+        data.values = assignUser(res);
     }
     
-    return res.status;
+    return data;
 }
 
 export async function signup(email, password, username) {
@@ -38,11 +52,15 @@ export async function signup(email, password, username) {
 
     const res = await axios.post(ROUTES.SIGN_UP, values, {headers: HEADERS});
     
+    let data = {
+        status: res.status
+    };
+
     if(okRespomnse(res)){
-        assignUser(res);
+        data.values = assignUser(res);
     }
 
-    return res.status;
+    return data;
 }
 
 export async function getCurrentUser(){

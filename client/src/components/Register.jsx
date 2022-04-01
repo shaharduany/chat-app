@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Alert, Button, Form, FormControl, InputGroup } from 'react-bootstrap';
 import FormCheckInput from 'react-bootstrap/esm/FormCheckInput';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import paths from '../routes';
 import { signup } from '../scripts/api-scripts/signin-signup';
 import styles from '../styles';
@@ -10,7 +11,8 @@ export default function Register(props){
     const style = styles();
     const PATHS = paths();
     const navigate = useNavigate();
-    
+    const dispatch = useDispatch();
+
     const [message, setMessage] = useState(false);
 
     const [email, setEmail] = useState("");
@@ -52,7 +54,8 @@ export default function Register(props){
             setMessage("Passwords don't match");
         } else {
             let val = signup(email, password, username);
-            if(val === 200){
+            if(val.status === 200){
+                dispatch(val.values);
                 navigate(PATHS.homepage);
             } else {
                 setMessage("Email is taken");

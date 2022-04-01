@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Alert, Button, Form, FormControl, InputGroup } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import paths from '../routes';
 import { login } from '../scripts/api-scripts/signin-signup';
@@ -9,7 +10,8 @@ export default function Login (props){
     const style = styles();
     const navigate = useNavigate();
     const PATHS = paths();
-
+    const dispatch = useDispatch();
+    
     const [message, setMessage] = useState(false);
 
     const [email, setEmail] = useState("");
@@ -28,8 +30,9 @@ export default function Login (props){
 
     const handleLogin = (event) => {
         event.preventDefault();
-        let loginAttempt = login(email, password);
-        if(loginAttempt === 200){
+        let data = login(email, password);
+        if(data.status === 200){
+            dispatch(data.values);
             navigate(PATHS.homepage);
         } else {
             setMessage("Unsuccessful attempt");

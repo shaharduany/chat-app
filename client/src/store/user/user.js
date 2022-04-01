@@ -9,10 +9,11 @@ const defaultUser = {
     logged: false,
 }
 
-export function addUser(user){
+export function addUser(user, token){
     return ({
         type: ADD_USER,
         user,
+        accessToken: token,
     });
 }
 
@@ -25,9 +26,9 @@ export function logoutUser(){
 function user(state = defaultUser, action){
     switch(action.type){
         case ADD_USER:
-            state.user.name = action.user.name;
-            state.user.email = action.user.email;
+            state.user = action.user;
             state.user.logged = true;
+            state.accessToken = action.accessToken;
             return state;    
         case LOGOUT_USER:
             logout();
