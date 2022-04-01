@@ -6,7 +6,6 @@ import { useSelector } from 'react-redux';
 import Header from './components/Nav';
 import JoinPage from './components/signing-page';
 import MainPage from './components/MainPage';
-import {Container} from 'react-bootstrap';
 import styles from './styles';
 import paths from './routes';
 
@@ -28,6 +27,7 @@ function App() {
           <Route exact path={PATHS.homepage} element={<h1>home page</h1>}></Route>
           <Route exact path={PATHS.join} element={<JoinPage />}></Route> 
           <Route exact path={PATHS.main} element={<MainPage />}></Route>
+          <Route exact path={PATHS.account} element={<h1>BUILD IT</h1>}></Route>
         </Routes>
       </Router>
       <footer style={style.footer}>

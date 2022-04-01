@@ -23,16 +23,27 @@ export default function Header(props){
                 >
                     HOME
                 </Nav.Link>
-                <Nav.Link
-                href={PATHS.join}
-                >
-                    JOIN US
-                </Nav.Link>
-                <Nav.Link
-                href={PATHS.main}
-                >
-                    ROOMS
-                </Nav.Link>
+                {!user.logged &&
+                    <Nav.Link
+                    href={PATHS.join}
+                    >
+                        JOIN US
+                    </Nav.Link>
+                }
+                {user.logged &&
+                    <Nav.Link
+                    href={PATHS.main}
+                    >
+                        ROOMS
+                    </Nav.Link>
+                }
+                {user.logged &&
+                    <Nav.Link
+                    href={PATHS.account}
+                    >
+                        ACCOUNT
+                    </Nav.Link>
+                }
             </Nav>
         </Navbar>
     </div>);

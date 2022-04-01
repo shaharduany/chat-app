@@ -4,5 +4,7 @@ export default function paths(){
         homepage: "/",
         join: "/join",
         main: "/main",
+        account: "/account",
+        
     }
 }
