@@ -1,9 +1,9 @@
 const cookieParser = require("cookie-parser");
 const express = require("express");
 const session = require("express-session");
-const authConfig = require('../config/auth-config');
 const cors = require("cors");
 const ROUTES = require("./routes");
+const authConfig = require('../config/auth-config');
 const { signin, signup, checkDuplicatedEmail, logout } = require("./controllers/signin-signup");
 const { authJwt } = require("./middleware/auth-jwt");
 const { verify } = require("jsonwebtoken");
@@ -11,7 +11,7 @@ const { getChats, searchRoom, addToRoom } = require("./controllers/chats");
 
 class Server{
     constructor(){
-        this.PORT = process.env.PORT || 4000;
+        this.PORT = process.env.PORT || 9000;
         this.app = express();
         
         this.middleware();

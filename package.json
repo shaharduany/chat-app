@@ -2,9 +2,13 @@
   "name": "chat-app",
   "version": "1.0.0",
   "description": "This is a multi-users chat web application",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "server": "nodemon",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "build": "npm run build --prefix client"
   },
   "author": "Shahar Duany",
   "license": "ISC",
