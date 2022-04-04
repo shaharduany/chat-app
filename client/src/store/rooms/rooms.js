@@ -16,8 +16,9 @@ export function addRoom(room){
 }
 
 const defaultRooms = [{
-    name: "",
+    name: "WELCOME ROOM",
     guests: "",
+    id: 0,
 }];
 
 function rooms(state = defaultRooms, action){

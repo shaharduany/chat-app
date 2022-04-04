@@ -44,6 +44,7 @@ export default function Login(props) {
       }, 5000);
     } else {
       console.log(data);
+      setPassword("");
       setMessage("Unsuccessful attempt");
     }
   };

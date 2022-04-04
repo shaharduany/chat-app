@@ -7,9 +7,10 @@ export default function styles() {
 		app: {
 			fontFamily: FONT,
 			textAlign: "center",
+			color: "white",
 		},
 		footer: {
-			backgroundColor: "darkgrey",
+			backgroundColor: "black",
 			color: "white",
 			position: "fixed",
 			bottom: "0px",
@@ -56,5 +57,9 @@ export default function styles() {
 			padding: PADDING,
 			width: inputWidths,
 		},
+		searcHBar: {
+			width: "50%",
+			margin: "auto",
+		}
 	};
 }
