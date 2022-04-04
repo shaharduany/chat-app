@@ -50,7 +50,7 @@ class Server{
         this.app.post(ROUTES.LOGOUT,authJwt.isUser, authJwt.verifyToken, logout)
         this.app.post(ROUTES.GET_MESSAGES, authJwt.isUser, authJwt.verifyToken, getMessages);
         this.app.post(ROUTES.SEARCH_ROOM, searchRoom);
-        this.app.post(ROUTES.JOIN_ROOM, authJwt.verifyToken, authJwt.isUser, addToRoom);
+        this.app.post(ROUTES.JOIN_ROOM, addToRoom);
         
     }
 

@@ -92,14 +92,18 @@ module.exports.searchRoom = async(req, res, next) => {
 module.exports.addToRoom = async(req, res, next) => {
     const roomName = req.body.roomName;
     const userId = req.body.userId;
+    console.log("got here");
+    console.log(`${roomName}\t${userId}`);
 
     let room = await lookUpRoom(roomName);
     let user = await User.findById(userId);
 
     if(room && user){
+        console.log(`room && user`);
         addRoomToUser(user, room);
         addUserToRoom(room, user);
     } else if(!room && user){
+        console.log(`!room && user`)
         room = new Room({name: roomName, guests: [user]});
         room.save();
         addRoomToUser(user, room);
@@ -111,13 +115,9 @@ module.exports.addToRoom = async(req, res, next) => {
         return;
     }
 
-    room = await lookUpRoom(roomName);
-    const roomId = room._id;
-    
-    res.statsu(200).send({
+    res.status(200).send({
         message: MESSAGES.PROCESSED,
         status: 200,
-        roomId,
     });
 }
 

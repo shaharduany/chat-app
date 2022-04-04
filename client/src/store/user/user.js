@@ -29,6 +29,7 @@ function user(state = defaultUser, action){
     switch(action.type){
         case ADD_USER:
             let values =  {
+                id: action.user.id,
                 username: action.user.username,
                 logged: action.user.logged,
                 email: action.user.email,

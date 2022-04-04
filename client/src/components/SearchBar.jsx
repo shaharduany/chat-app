@@ -18,6 +18,7 @@ export default function SearchBar(props) {
 
     const addClicked = async(event) => {
         event.preventDefault();
+        console.log(user.id);
         let data = await joinRoom(user.id, search);
         console.log(data);
     }

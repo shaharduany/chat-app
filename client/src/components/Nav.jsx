@@ -17,9 +17,8 @@ export default function Header(props){
 
     const handleLogoutClick = async (event) => {
         let action = logoutUser();
-        console.log(action)
         dispatch(action);
-        console.log(user);    
+        navigate(PATHS.homepage);
     }
 
     useEffect(() => {
