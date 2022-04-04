@@ -28,7 +28,13 @@ export function updateRoom() {
 export default function room(state = defaultRoom, action){
     switch(action.type){
         case SELECT_ROOM:
-            break;
+            let selected = {
+                id: action.room.id,
+                name: action.room.name,
+                messages: action.room.messages,
+            };
+            
+            return selected;
         case ADD_MESSAGE:
             break;
         case UPDATE:

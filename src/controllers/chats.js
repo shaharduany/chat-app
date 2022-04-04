@@ -3,6 +3,10 @@ const Room = require('../models/Room');
 const Message = require('../models/Message');
 const User = require('../models/User');
 
+async function findRoomById(roomId){
+    return await Room.findById(roomId);
+}
+
 //Fill up all the rooms of the user
 async function fillAllRooms(rooms, res){
     let collection = [];
@@ -25,13 +29,8 @@ async function fillAllRooms(rooms, res){
 
 //Fill up all the messages in the room
 async function fillUpMessages(room){
-    let built = {
-        name: room.name,
-        guests: room.guests
-    };
-
     let messages = [];
-
+    
     for(let msg of room.messages){
         await Message.findById(msg).exec((err, message) => {
             if(err){
@@ -42,9 +41,7 @@ async function fillUpMessages(room){
         });
     }
 
-    built.messages = messages;
-    
-    return built;
+    return messages;
 }
 
 async function addRoomToUser(user, room){
@@ -56,6 +53,7 @@ async function addUserToRoom(room, user){
     room.guests.push(user._id);
     room.save();
 }
+
 
 async function lookUpRoom(roomName){
     return await Room.findOne({name: roomName});
@@ -73,7 +71,7 @@ module.exports.getChats = async (req, res, next) =>{
     }
 
     if(collection.length > 0){
-        res.status(200).send({rooms: builtRooms});
+        res.status(200).send({rooms: builtRooms });
     } else {
         res.status(404).send({message: MESSAGES.ROOMS_NOT_FOUND});
     }
@@ -101,8 +99,42 @@ module.exports.addToRoom = async(req, res, next) => {
     if(room && user){
         addRoomToUser(user, room);
         addUserToRoom(room, user);
-        res.status(200).send({message: MESSAGES.PROCESSED});
+    } else if(!room && user){
+        room = new Room({name: roomName, guests: [user]});
+        room.save();
+        addRoomToUser(user, room);
     } else {
-        res.status(404).send({message: MESSAGES.ROOMS_NOT_FOUND});
+        res.status(404).send({
+            message: MESSAGES.ROOMS_NOT_FOUND,
+            status: 404,
+        });
+        return;
     }
+
+    room = await lookUpRoom(roomName);
+    const roomId = room._id;
+    
+    res.statsu(200).send({
+        message: MESSAGES.PROCESSED,
+        status: 200,
+        roomId,
+    });
+}
+
+module.exports.getMessages = async(req, res, next) =>{
+    const roomId = req.body.roomId;
+
+    let room = findRoomById(roomId);
+
+    if(!room){
+        res.status(404).send({
+            messages: MESSAGES.ROOMS_NOT_FOUND,
+            status: 404
+        });
+        return;
+    }
+
+    const messages = fillUpMessages(room);
+
+    res.send({messages: messages});
 }

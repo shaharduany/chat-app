@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const roomSchema = new Schema({
     guests: {
         type: Array,
-        required: true,
+        required: false,
         unique: false,
     },
     messages: {

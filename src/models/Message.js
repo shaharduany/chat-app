@@ -20,7 +20,7 @@ const messageSchema = new Schema({
     },
     room: {
         type: mongoose.Types.ObjectId,
-        required: true,
+        required: false,
         unique: false,
     }
 });

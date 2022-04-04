@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import { Alert, Button, Form, FormControl, InputGroup } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { joinRoom } from "../scripts/rooms-scripts";
 import styles from "../styles";
 
 export default function SearchBar(props) {
     const style = styles();
     
+    const user = useSelector(state => state.user);
+    const dispatch = useDispatch();
+
     const [search, setSearch] = useState("");
     const handleSearchChange = (event) => {
         event.preventDefault();
@@ -12,7 +17,9 @@ export default function SearchBar(props) {
     }
 
     const addClicked = async(event) => {
-
+        event.preventDefault();
+        let data = await joinRoom(user.id, search);
+        console.log(data);
     }
 
   return <div style={style.searchBar}>

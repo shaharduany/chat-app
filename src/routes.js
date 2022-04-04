@@ -3,9 +3,9 @@ const ROUTES = {
     SIGN_IN: "/api/signin",
     SIGN_UP: "/api/signup",
     LOGOUT: "/api/logout",
-    GET_ROOMS: "/api/getrooms/",
+    GET_MESSAGES: "/api/gemessages",
     JOIN_ROOM: "/api/joinroom",
-    SEARCH_ROOM: "/api/searchroom/",
+    SEARCH_ROOM: "/api/searchroom",
 }
 
 module.exports = ROUTES;
