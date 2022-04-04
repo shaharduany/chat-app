@@ -3,11 +3,11 @@ import { logout } from "../../scripts/api-scripts/signin-signup";
 const ADD_USER = "ADD_USER";
 const LOGOUT_USER = "LOGOUT_USER";
 
-const defaultUser = {
+const defaultUser = JSON.parse(localStorage.getItem('user')) ||  {
     username: "",
     email: "",
     logged: false,
-}
+};
 
 export function addUser(user, token){
     return ({
@@ -26,10 +26,14 @@ export function logoutUser(){
 function user(state = defaultUser, action){
     switch(action.type){
         case ADD_USER:
-            state.user = action.user;
-            state.user.logged = true;
-            state.accessToken = action.accessToken;
-            return state;    
+            let values =  {
+                username: action.user.username,
+                logged: action.user.logged,
+                email: action.user.email,
+                accessToken: action.accessToken,
+            };
+            localStorage.setItem('user', JSON.stringify(values));
+            return values;
         case LOGOUT_USER:
             logout();
             return (defaultUser);

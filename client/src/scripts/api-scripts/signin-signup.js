@@ -8,16 +8,16 @@ const HEADERS = authHeader();
 const ITEM_NAME = 'user';
 
 function okRespomnse(res){
-    return (res.status < 400);
+    return (res.data.status < 400) && (res.data.status);
 }
 
-function assignUser(response){
-    const data = response.data;
+function assignUser(data){
     const user = {
         id: data.id,
         email: data.email,
         username: data.username,
         rooms: data.rooms,
+        logged: true,
     };
 
     const token = data.accessToken;
@@ -32,14 +32,14 @@ export async function login(email, password){
     };
 
     const res = await axios.post(ROUTES.SIGN_IN, vals, {headers: HEADERS});
-    let data = {
-        status: res.status,
-    };
+    
+    let data = res.data;
 
     if(okRespomnse(res)){
-        data.values = assignUser(res);
+        data.values = assignUser(data);
     }
-    
+    console.log(data.values);
+
     return data;
 }
 
@@ -52,12 +52,10 @@ export async function signup(email, password, username) {
 
     const res = await axios.post(ROUTES.SIGN_UP, values, {headers: HEADERS});
     
-    let data = {
-        status: res.status
-    };
-
+    let data = res.data;
+    
     if(okRespomnse(res)){
-        data.values = assignUser(res);
+        data.values = assignUser(data);
     }
 
     return data;
@@ -78,6 +76,6 @@ export async function logout() {
         const res = await axios.post(ROUTES.LOGOUT, vals, {headers: HEADERS});
 
         localStorage.removeItem(ITEM_NAME);
-        return res.status;
+        return res.data.status;
     }
 }

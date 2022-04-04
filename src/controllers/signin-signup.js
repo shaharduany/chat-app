@@ -38,6 +38,7 @@ module.exports.signup = (req, res) => {
       let token = getToken(user);
   
       let vals = {
+        status: 200,
         message: MESSAGES.CREATED,
         id: user._id,
         username: user.username,
@@ -57,12 +58,12 @@ module.exports.signin = async(req, res) => {
     
     let user = User.findOne({email: email}).exec((err, user) => {
         if(err){
-            res.status(404).send({message: err});
+            res.status(404).send({message: err, status: 404});
             return;
         }
         if(!user){
             console.log(MESSAGES.NOT_FOUND);
-            res.status(404).send({message: MESSAGES.NOT_FOUND});
+            res.status(404).send({message: MESSAGES.NOT_FOUND, status: 404});
             return;
         }
   
@@ -75,6 +76,7 @@ module.exports.signin = async(req, res) => {
         console.log(MESSAGES.INVALID_PASSWORD
             );
         return res.status(404).send({
+          status: 404,
           accessToken: null,
           message: MESSAGES.INVALID_PASSWORD,
         });
@@ -85,6 +87,7 @@ module.exports.signin = async(req, res) => {
       let vals = {
         message: MESSAGES.LOGGED_IN,
         id: user._id,
+        status: 200,
         username: user.username,
         email: user.email,
         rooms: user.rooms,

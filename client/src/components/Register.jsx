@@ -47,13 +47,13 @@ export default function Register(props){
         return ((email !== "") && (password !== "") && (username !== ""));
     }
 
-    const registerClick = (event) => {
+    const registerClick = async (event) => {
         if(!assureAllFilled(username, password, email)){
             setMessage("You must fill all the fields below");
         } else if(password !== rePassword){
             setMessage("Passwords don't match");
         } else {
-            let val = signup(email, password, username);
+            let val = await signup(email, password, username);
             if(val.status === 200){
                 dispatch(val.values);
                 navigate(PATHS.homepage);

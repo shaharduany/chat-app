@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Navbar, Nav, NavbarBrand } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import paths from '../routes';
@@ -10,9 +10,11 @@ export default function Header(props){
     const style = styles();
 
     const user = useSelector(state => state.user);
-    console.log("user two");
-    console.log(user);
 
+    useEffect(() => {
+
+    }, [user]);
+    
     return (<div className='nav-div' style={style.navDiv}>
         <Navbar variant='dark' bg='dark' style={styles.nav}
         className="justify-content-center">
