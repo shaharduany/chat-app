@@ -4,6 +4,16 @@
 
 This is a single-page, chat application, with a ReactJS front and Node.js back.
 
+## Libraries:
+1. Express
+2. Cors
+3. MongoDB
+4. JWT
+5. Bcrypt
+6. React
+7. Axios
+8. Redux
+9. Bootstrap
 
 ## To-do:
 ### Back-end:
@@ -16,14 +26,3 @@ This is a single-page, chat application, with a ReactJS front and Node.js back.
 1. Build the homepage, rooms, and account views
 2. Build API's for the chat: getroom. searchRoom, joinRoom  and post message, create room
 3. Build the search room feature
-
-## Libraries:
-1. Express
-2. Cors
-3. MongoDB
-4. JWT
-5. Bcrypt
-6. React
-7. Axios
-8. Redux
-9. Bootstrap
