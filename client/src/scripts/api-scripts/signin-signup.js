@@ -57,7 +57,7 @@ export async function signup(email, password, username) {
     if(okRespomnse(res)){
         data.values = assignUser(data);
     }
-
+    
     return data;
 }
 

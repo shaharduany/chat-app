@@ -1,4 +1,3 @@
-import { logout } from "../../scripts/api-scripts/signin-signup";
 
 const ADD_USER = "ADD_USER";
 const LOGOUT_USER = "LOGOUT_USER";
@@ -39,6 +38,7 @@ function user(state = defaultUser, action){
             return values;
         case LOGOUT_USER:
             localStorage.removeItem('user');
+            localStorage.removeItem('rooms');
             return defaultUser;
         default:
             return state;

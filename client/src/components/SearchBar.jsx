@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Alert, Button, Form, FormControl, InputGroup } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { joinRoom } from "../scripts/rooms-scripts";
 import styles from "../styles";
 
@@ -8,8 +8,7 @@ export default function SearchBar(props) {
     const style = styles();
     
     const user = useSelector(state => state.user);
-    const dispatch = useDispatch();
-
+    
     const [search, setSearch] = useState("");
     const handleSearchChange = (event) => {
         event.preventDefault();
@@ -36,7 +35,6 @@ export default function SearchBar(props) {
                 />
                 <Button
                 variant="primary"
-                rounded={true}
                 size="lg"
                 onClick={addClicked}
                 >

@@ -47,6 +47,7 @@ export default function Register(props){
         return ((email !== "") && (password !== "") && (username !== ""));
     }
 
+
     const registerClick = async (event) => {
         if(!assureAllFilled(username, password, email)){
             setMessage("You must fill all the fields below");

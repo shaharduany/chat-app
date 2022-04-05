@@ -1,5 +1,14 @@
 const ADD_ROOM = "ADD_ROOM";
 const LEAVE_ROOM = "LEAVE_ROOM";
+const UPDATE_ROOMS = "UPDATE_ROOMS";
+
+export function updateRooms(rooms){
+    return {
+        type: UPDATE_ROOMS, 
+        rooms,
+    }
+}
+
 
 export function leaveRoom(room){
     return ({
@@ -21,16 +30,22 @@ const defaultRooms = [{
     id: 0,
 }];
 
-function rooms(state = defaultRooms, action){
+const DEFAULT = JSON.parse(localStorage.getItem('rooms')) || defaultRooms;
+
+function rooms(state = DEFAULT, action){
     switch(action.type){
         case ADD_ROOM:
-            return[...state, {
+            const arr = [...state, {
                 name: action.room.name,
                 guests: action.room.guests,
             }];
+            localStorage.setItem('rooms', JSON.stringify(arr));
+            return arr;
         case LEAVE_ROOM:
             //Fill it up later
             break;
+        case UPDATE_ROOMS: 
+            return action.rooms;
         default:
             return state;
     }

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import paths from "../routes";
 import { login } from "../scripts/api-scripts/signin-signup";
+import { addRoom, updateRooms } from "../store/rooms/rooms";
 import styles from "../styles";
 
 export default function Login(props) {
@@ -28,17 +29,28 @@ export default function Login(props) {
     setPassword(value);
   };
 
+  const updateRooms = (rooms) => {
+    for(let i = 0; i < rooms.length; i++){
+      let obj = {
+        name: rooms[i].name,
+        guests: rooms[i].guests,
+        messages: rooms[i].messages,
+        id: rooms[i].id,
+      };
+      dispatch(addRoom(obj));
+    }
+  }
+
   const handleLogin = async (event) => {
     event.preventDefault();
-    console.log(user);
 
     let data = await login(email, password);
+    const rooms = data.rooms;
+    console.log(rooms);
+
     if (data.status < 400) {
       dispatch(data.values);
-      console.log(`at handleLogin: ${data.values}`);
-      console.log(`after login`);
-      console.log(user);
-      setMessage("logged in");
+      updateRooms(rooms);  
       setTimeout(() => {
         navigate(PATHS.homepage);
       }, 5000);
