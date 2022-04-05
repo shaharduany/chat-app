@@ -2,6 +2,9 @@
 
 ## UNDER CONSTRUCTION
 
+This is a single-page, chat application, with a ReactJS front and Node.js back.
+
+
 ## To-do:
 ### Back-end:
 1. Build post message route
