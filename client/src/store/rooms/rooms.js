@@ -38,6 +38,8 @@ function rooms(state = DEFAULT, action){
             const arr = [...state, {
                 name: action.room.name,
                 guests: action.room.guests,
+                messages: action.room.messages,
+                id: action.room.id,
             }];
             localStorage.setItem('rooms', JSON.stringify(arr));
             return arr;

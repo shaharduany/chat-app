@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useSelector } from "react-redux";
-import Header from "./components/Nav";
+import Header from "./components/Header";
 import JoinPage from "./components/signing-page";
 import MainPage from "./components/MainPage";
 import styles from "./styles";

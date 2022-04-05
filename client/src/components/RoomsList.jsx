@@ -1,23 +1,31 @@
-import React, { useEffect } from 'react';
-import { Button } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from "react";
+import { ListGroup } from "react-bootstrap";
+import { useSelector } from "react-redux";
+import styles from "../styles";
 
-export default function RoomList(props){
-    const rooms = useSelector(state => state.rooms);
+export default function RoomList(props) {
+  const rooms = useSelector((state) => state.rooms);
+  const style = styles();
 
-    useEffect(() => {
+  const roomClick = (select) => {
+    console.log(`name > ${select.name} \nid > ${select.id}`);
+  };
 
-    }, [rooms]);    
+  useEffect(() => {}, [rooms]);
 
-    console.log(rooms);
-
-    return (<div>
-        <h3>ROOMS</h3>
-        {rooms && rooms.map((value, index) => <div>
-            <Button key={index} variant="info" size="sm">{value.name}</Button>
-            <br />
-            </div>)}
-        </div>);
+  return (
+    <div style={style.roomListDiv}>
+      <h3>ROOMS</h3>
+      <ListGroup>
+        {rooms &&
+          rooms.map((value, index) => (
+            <ListGroup.Item action onClick={() => roomClick(value)} key={value.id}>
+              {value.name}
+            </ListGroup.Item>
+          ))}
+      </ListGroup>
+    </div>
+  );
 }
 
-// 
+//

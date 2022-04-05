@@ -7,7 +7,6 @@ export default function styles() {
 		app: {
 			fontFamily: FONT,
 			textAlign: "center",
-			color: "white",
 		},
 		footer: {
 			backgroundColor: "black",
@@ -60,6 +59,9 @@ export default function styles() {
 		searcHBar: {
 			width: "50%",
 			margin: "auto",
+		},
+		roomListDiv: {
+			
 		}
 	};
 }
