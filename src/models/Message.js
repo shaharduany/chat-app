@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const messageSchema = new Schema({
     sender: {
-        type: mongoose.Types.ObjectId,
+        type: String,
         required: true,
         unique: false,
     },

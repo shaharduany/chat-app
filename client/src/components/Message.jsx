@@ -1,18 +1,17 @@
-import React from 'react';
-import { Alert } from 'react-bootstrap';
+import React from "react";
 
-export default function Message (props){
-    const message = props.messaage;
-    
-    const sender = message.sedner;
-    const content = message.content;
-    const date = message.date;
+export default function Message(props) {
+  const message = props.message;
 
-    return (<div>
-        <Alert>
-            <Alert.Heading>{sender}</Alert.Heading>
-            <Alert.Body>{content}</Alert.Body>
-            <Alert.Footer>{date}</Alert.Footer>
-        </Alert>
-    </div>);
+  const sender = message.sender;
+  const content = message.content;
+  const date = Date.parse(message.date);
+
+  return (
+    <div style={{ textAlign: "first" }}>
+      <p>
+        <b>{sender}</b>@{date}: {content}
+      </p>
+    </div>
+  );
 }
