@@ -51,7 +51,6 @@ class Server{
         this.app.post(ROUTES.GET_MESSAGES, authJwt.isUser, authJwt.verifyToken, getMessages);
         this.app.post(ROUTES.SEARCH_ROOM, searchRoom);
         this.app.post(ROUTES.JOIN_ROOM, addToRoom);
-        
     }
 
     listen(){

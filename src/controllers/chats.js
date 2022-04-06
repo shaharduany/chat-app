@@ -123,18 +123,24 @@ module.exports.addToRoom = async(req, res, next) => {
 
 module.exports.getMessages = async(req, res, next) =>{
     const roomId = req.body.roomId;
-
-    let room = findRoomById(roomId);
+    console.log('in getmessages');
+    
+    
+    let room = await findRoomById(roomId);
 
     if(!room){
         res.status(404).send({
-            messages: MESSAGES.ROOMS_NOT_FOUND,
-            status: 404
+            message: MESSAGES.ROOMS_NOT_FOUND,
+            status: 404,
+            messages: []
         });
         return;
     }
 
-    const messages = fillUpMessages(room);
+    const messages = await fillUpMessages(room);
 
-    res.send({messages: messages});
+    res.status(200).send({
+        messages: messages,
+        status: 200,
+    });
 }

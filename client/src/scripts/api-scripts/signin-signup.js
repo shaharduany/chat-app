@@ -21,7 +21,8 @@ function assignUser(data){
     };
 
     const token = data.accessToken;
-
+    console.log(token);
+    
     return addUser(user, token);
 }
 

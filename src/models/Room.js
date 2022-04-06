@@ -11,6 +11,7 @@ const roomSchema = new Schema({
     messages: {
         type: Array,
         required: false,
+        default: [],
         unique: false,
     },
     name: {

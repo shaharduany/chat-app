@@ -3,7 +3,7 @@ const ROUTES = {
     SIGN_IN: "/api/signin",
     SIGN_UP: "/api/signup",
     LOGOUT: "/api/logout",
-    GET_MESSAGES: "/api/gemessages",
+    GET_MESSAGES: "/api/getmessages",
     JOIN_ROOM: "/api/joinroom",
     SEARCH_ROOM: "/api/searchroom",
 }

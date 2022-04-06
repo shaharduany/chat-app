@@ -1,14 +1,15 @@
 import React from 'react';
-import { Card } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
+import Message from './Message';
 
 export default function Room(props){
-    const rooms = useSelector(state => state.rooms);
+    const room = useSelector(state => state.room);
     
     return (<div>
-        <h1>room</h1>
-        <Card bg='dark'>
-            
-        </Card>
+        <h3>{room.name}</h3>
+        {room.messages instanceof Array && room.messages.map((value, index) => 
+            <Message key={index} message={value} />
+        )}
+
     </div>);
 }

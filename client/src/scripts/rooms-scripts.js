@@ -3,9 +3,10 @@ import getPaths from "./api-scripts/api-paths";
 import authHeader from "./api-scripts/auth-headers";
 
 const ROUTES = getPaths();
-const HEADERS = authHeader();
 
 export async function joinRoom(userId, roomName){
+    const HEADERS = authHeader();
+
     let vals = {
         userId,
         roomName,
@@ -21,9 +22,11 @@ export async function joinRoom(userId, roomName){
 }
 
 export async function getMessages(user, room){
+    const HEADERS = authHeader();
+
     let vals = {
         email: user.email,
-        id: room.id,
+        roomId: room.id,
     }
     
     const res = await axios.post(ROUTES.GET_MESSAGESS, vals, {headers: HEADERS});
