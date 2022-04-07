@@ -35,3 +35,22 @@ export async function getMessages(user, room){
 
     return data;
 }
+
+export async function postMessage(email, sender, content, roomId){
+    const HEADERS = authHeader();
+    
+    const values = {
+        email,
+        sender,
+        content,
+        roomId,
+    };
+
+    const res = await axios.post(ROUTES.POST_MESSAGE, values, {
+        headers: HEADERS
+    });
+
+    const data = res.data;
+
+    return data;
+}

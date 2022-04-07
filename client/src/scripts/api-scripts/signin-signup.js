@@ -21,7 +21,6 @@ function assignUser(data){
     };
 
     const token = data.accessToken;
-    console.log(token);
     
     return addUser(user, token);
 }
@@ -67,16 +66,5 @@ export async function getCurrentUser(){
 }
 
 export async function logout() {
-    const user = getCurrentUser();
-
-    if(user){
-        const vals = {
-            accessToken: user.accessToken,
-        }
-
-        const res = await axios.post(ROUTES.LOGOUT, vals, {headers: HEADERS});
-
-        localStorage.removeItem(ITEM_NAME);
-        return res.data.status;
-    }
+    localStorage.removeItem('user');
 }

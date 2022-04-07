@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import paths from "../routes";
 import { login } from "../scripts/api-scripts/signin-signup";
-import { addRoom, updateRooms } from "../store/rooms/rooms";
+import { addRoom } from "../store/rooms/rooms";
 import styles from "../styles";
 
 export default function Login(props) {

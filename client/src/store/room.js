@@ -21,8 +21,11 @@ export function addMessage(message){
     };
 }
 
-export function updateRoom() {
-    return {type: UPDATE};
+export function updateRoom(messages) {
+    return {
+        type: UPDATE,
+        messages,
+    };
 }
 
 export default function room(state = defaultRoom, action){
@@ -38,7 +41,8 @@ export default function room(state = defaultRoom, action){
         case ADD_MESSAGE:
             break;
         case UPDATE:
-            break;
+            state.messages = action.messages;
+            return state;
         default:
             return state;
     }

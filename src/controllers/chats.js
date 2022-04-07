@@ -123,8 +123,15 @@ module.exports.addToRoom = async(req, res, next) => {
 
 module.exports.getMessages = async(req, res, next) =>{
     const roomId = req.body.roomId;
-    console.log('in getmessages');
-    
+
+    if(roomId === 0){
+        res.status(404).send({
+            message: MESSAGES.ROOMS_NOT_FOUND,
+            status: 404,
+            messages: []
+        });
+        return;
+    }
     
     let room = await findRoomById(roomId);
 
@@ -143,4 +150,33 @@ module.exports.getMessages = async(req, res, next) =>{
         messages: messages,
         status: 200,
     });
+}
+
+module.exports.postMessage = async(req, res, next) => {
+    console.log(`In postmessage`);
+
+    const roomId = req.body.roomId;
+    const sender = req.body.sender;
+    const content = req.body.content;
+   
+    const obj = {
+        sender: sender,
+        content: content,
+    }
+
+    console.log(`sender > ${obj.sender} content > ${obj.content}`);
+
+    const room = await Room.findById(roomId);
+    
+    const message = new Message(obj);
+
+    room.save();
+
+    let msg = {
+        message: MESSAGES.PROCESSED,
+        status: 200
+    };
+
+    res.status(200).send(msg);
+    console.log(`left post messages`);
 }

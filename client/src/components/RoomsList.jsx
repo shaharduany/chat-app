@@ -16,8 +16,12 @@ export default function RoomList(props) {
   const roomClick = async (select) => {
     console.log(`select: ${select.id}`);
     const data = await getMessages(user, select);
-    console.log(data.messages);
-    
+    let obj = {
+      name: select.name,
+      messages: data.messages
+    }
+
+    dispatch(selectRoom(obj));
   };
 
   useEffect(() => {}, [rooms]);

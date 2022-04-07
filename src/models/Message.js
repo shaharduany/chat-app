@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { DATE } = require('mysql/lib/protocol/constants/types');
 
 const Schema = mongoose.Schema;
 
@@ -14,9 +15,9 @@ const messageSchema = new Schema({
         unique: false,
     },
     date: {
-        type: Date,
-        required: true,
-        default: Date.now()
+        type: String,
+        required: false,
+        default: new Date().toLocaleString()
     },
     room: {
         type: mongoose.Types.ObjectId,

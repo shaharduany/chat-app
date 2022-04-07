@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { Button, Form, FormControl, InputGroup } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { postMessage } from '../scripts/rooms-scripts';
 
 export default function SendMessage(props) {
-    const user = useSelector(state => state.user);
+    const dispatch = useDispatch();
 
+    const user = useSelector(state => state.user);
+    const room = useSelector(state => state.room);
+    
     const [content, setContent] = useState("");
     const contentChange = (event) => {
         event.preventDefault();
@@ -12,9 +16,15 @@ export default function SendMessage(props) {
         setContent(val);
     }
 
-    const sendClick = (event) => {
+    const sendClick = async(event) => {
         event.preventDefault();
-        console.log(content);
+        
+        const req = await postMessage(user.email, user.username, content, room.id);
+
+        if(req.status === 200){
+            dispatch()        
+        }
+    
         setContent("");
     }
 
