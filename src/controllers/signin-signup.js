@@ -93,8 +93,7 @@ module.exports.signin = async (req, res) => {
     });
   }
 
-  let rooms = await convertIdsToRooms(user.rooms);
-  console.log(rooms);
+  let rooms = await convertIdsToRooms(user.rooms); 
   let token = getToken(user);
 
   let vals = {
@@ -121,7 +120,7 @@ module.exports.checkDuplicatedEmail = (req, res, next) => {
       return;
     }
     if (user) {
-      res.status(400), send({ message: MESSAGES.EMAIL_IN_USE });
+      res.status(400).send({ message: MESSAGES.EMAIL_IN_USE });
       return;
     }
     console.log("finished duplicate emails");

@@ -5,7 +5,7 @@ const User = require("../models/User");
 
 const verifyToken = async(req, res, next) => {
     let token = req.headers["x-access-token"];
-
+    
     if(!token){
         res.status(404).send({message: MESSAGES.TOKEN_NOT_FOUND});
         return;
@@ -23,6 +23,7 @@ const verifyToken = async(req, res, next) => {
 const isUser = async(req, res, next) => {
     const email = req.body.email;
     const user = await User.findOne({email: email});
+    
     if(user){
         next();
     } else {

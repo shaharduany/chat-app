@@ -164,12 +164,14 @@ module.exports.postMessage = async(req, res, next) => {
         content: content,
     }
 
-    console.log(`sender > ${obj.sender} content > ${obj.content}`);
+    console.log(`sender > ${obj.sender} content > ${obj.content} roomId > ${roomId}`);
 
     const room = await Room.findById(roomId);
     
     const message = new Message(obj);
+    message.save();
 
+    room.messages.push(message._id);
     room.save();
 
     let msg = {

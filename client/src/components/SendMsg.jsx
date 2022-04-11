@@ -8,7 +8,7 @@ export default function SendMessage(props) {
 
     const user = useSelector(state => state.user);
     const room = useSelector(state => state.room);
-    
+
     const [content, setContent] = useState("");
     const contentChange = (event) => {
         event.preventDefault();
@@ -21,10 +21,6 @@ export default function SendMessage(props) {
         
         const req = await postMessage(user.email, user.username, content, room.id);
 
-        if(req.status === 200){
-            dispatch()        
-        }
-    
         setContent("");
     }
 

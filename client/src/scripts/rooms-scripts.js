@@ -17,7 +17,6 @@ export async function joinRoom(userId, roomName){
 
     const data = res.data;
     
-    console.log(data);
     return data;
 }
 

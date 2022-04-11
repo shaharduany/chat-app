@@ -18,7 +18,8 @@ export default function RoomList(props) {
     const data = await getMessages(user, select);
     let obj = {
       name: select.name,
-      messages: data.messages
+      messages: data.messages,
+      id: select.id,
     }
 
     dispatch(selectRoom(obj));
