@@ -8,6 +8,16 @@ export default function styles() {
 			fontFamily: FONT,
 			textAlign: "center",
 		},
+		room: {
+			textAlign: "start",
+		},
+		roomMsg: {
+			textAlign: "start",
+			height: "200px",
+			padding: "5px",
+			overflowY: "scroll",
+			
+		},
 		footer: {
 			backgroundColor: "black",
 			color: "white",

@@ -21,6 +21,4 @@ This is a single-page, chat application, with a ReactJS front and Node.js back.
 
 
 ### Front-end
-1. Make messages appear
-2. Set interval for updates
-3. Set logout to navigate
+1. Set logout to navigate

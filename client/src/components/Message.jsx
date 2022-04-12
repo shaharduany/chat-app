@@ -5,12 +5,12 @@ export default function Message(props) {
 
   const sender = message.sender;
   const content = message.content;
-  const date = Date.parse(message.date);
+  const date = message.date;
 
   return (
     <div style={{ textAlign: "first" }}>
       <p>
-        <b>{sender}</b>@{date}: {content}
+        <b>{sender}</b>@{date} <br />{content}
       </p>
     </div>
   );

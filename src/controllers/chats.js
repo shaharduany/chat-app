@@ -32,13 +32,9 @@ async function fillUpMessages(room){
     let messages = [];
     
     for(let msg of room.messages){
-        await Message.findById(msg).exec((err, message) => {
-            if(err){
-                console.log(err);
-            } else {
-                messages.push(message);
-            }
-        });
+        let message = await Message.findById(msg);
+        messages.push(message);
+
     }
 
     return messages;
@@ -98,7 +94,7 @@ module.exports.addToRoom = async(req, res, next) => {
     let room = await lookUpRoom(roomName);
     let user = await User.findById(userId);
  1
- 
+
     if(room && user){
         console.log(`room && user`);
         addRoomToUser(user, room);
@@ -146,7 +142,6 @@ module.exports.getMessages = async(req, res, next) =>{
     }
 
     const messages = await fillUpMessages(room);
-
     res.status(200).send({
         messages: messages,
         status: 200,
