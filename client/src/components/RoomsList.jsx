@@ -21,7 +21,7 @@ export default function RoomList(props) {
       messages: data.messages,
       id: select.id,
     }
-
+    console.log(obj);
     dispatch(selectRoom(obj));
   };
 

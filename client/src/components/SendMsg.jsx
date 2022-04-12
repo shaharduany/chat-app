@@ -19,7 +19,7 @@ export default function SendMessage(props) {
     const sendClick = async(event) => {
         event.preventDefault();
         
-        const req = await postMessage(user.email, user.username, content, room.id);
+        const req = await postMessage(user.id, user.username, content, room.id);
 
         setContent("");
     }

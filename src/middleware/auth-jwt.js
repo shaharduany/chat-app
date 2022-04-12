@@ -15,14 +15,15 @@ const verifyToken = async(req, res, next) => {
         if (err) {
           return res.status(401).send({ message: MESSAGES.LOGIN_AGAIN});
         }
+        
         req.userId = decoded.id;
         next();
     });
 }
 
 const isUser = async(req, res, next) => {
-    const email = req.body.email;
-    const user = await User.findOne({email: email});
+    const userId = req.body.userId;
+    const user = await User.findById(userId);
     
     if(user){
         next();

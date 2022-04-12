@@ -24,7 +24,7 @@ export async function getMessages(user, room){
     const HEADERS = authHeader();
 
     let vals = {
-        email: user.email,
+        userId: user.id,
         roomId: room.id,
     }
     
@@ -35,11 +35,11 @@ export async function getMessages(user, room){
     return data;
 }
 
-export async function postMessage(email, sender, content, roomId){
+export async function postMessage(userId, sender, content, roomId){
     const HEADERS = authHeader();
     
     const values = {
-        email,
+        userId,
         sender,
         content,
         roomId,

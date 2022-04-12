@@ -17,12 +17,10 @@ This is a single-page, chat application, with a ReactJS front and Node.js back.
 
 ## To-do:
 ### Back-end:
-1. Build post message route
-2. Extend use of user's access token after posting or getting items
-3. Add a getter for room messages
-4. fix the bug with login attempts
+1. Build first room
 
-### Front-endP
-1. Build the homepage, rooms, and account views
-2. Build API's for the chat: getroom. searchRoom, joinRoom  and post message, create room
-3. Build the search room feature
+
+### Front-end
+1. Make messages appear
+2. Set interval for updates
+3. Set logout to navigate

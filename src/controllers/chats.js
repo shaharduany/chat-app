@@ -97,7 +97,8 @@ module.exports.addToRoom = async(req, res, next) => {
 
     let room = await lookUpRoom(roomName);
     let user = await User.findById(userId);
-
+ 1
+ 
     if(room && user){
         console.log(`room && user`);
         addRoomToUser(user, room);

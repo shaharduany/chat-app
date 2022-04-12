@@ -18,13 +18,6 @@ export default function Room(props) {
 
   useEffect(() => {}, [room]);
 
-  setInterval(async() => {
-    let val = await getMessages(user, room);
-    if(room.messages !== val.messages){
-      dispatch(updateRoom(val.messages));
-    }
-  }, 5000);
-
   return (
     <div>
       <h3>{room.name}</h3>
