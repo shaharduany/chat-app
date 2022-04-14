@@ -41,7 +41,6 @@ function rooms(state = DEFAULT, action){
                 messages: action.room.messages,
                 id: action.room.id,
             }];
-            localStorage.setItem('rooms', JSON.stringify(arr));
             return arr;
         case LEAVE_ROOM:
             //Fill it up later

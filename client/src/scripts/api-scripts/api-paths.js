@@ -7,6 +7,7 @@ export default function getPaths() {
         GET_MESSAGESS: "/api/getmessages/",
         JOIN_ROOM: "/api/joinroom/",
         SEARCH_ROOM: "/api/searchroom/",
-        POST_MESSAGE: "/api/postmessage/"  
+        POST_MESSAGE: "/api/postmessage/",
+        REQUEST_ROOMS: "/api/requestrooms/",
     }
 }

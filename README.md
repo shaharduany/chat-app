@@ -2,10 +2,15 @@
 
 ## UNDER CONSTRUCTION
 
-This is a single-page, chat application, with a ReactJS front and Node.js back.
+This is a single-page, mobile-first, chat application, with a ReactJS front and Node.js back.
 
-## Libraries:
-1. Express
+ It has authentication feature that updates every time there's a login or a visit to the website using JWT, 3 states managed with Redux.
+
+The database is divided into 3 collections in a NoSQL database, I used a cloud based database.
+
+
+## Libraries & Frameworks:
+1. Node.js & Express
 2. Cors
 3. MongoDB
 4. JWT
@@ -15,9 +20,13 @@ This is a single-page, chat application, with a ReactJS front and Node.js back.
 8. Redux
 9. Bootstrap
 
+## Setup Instructions:
+1. You need nodeman and concurrently installed.
+2. Create a default.json file at the config folder and set up a field with the database connection link called mongoURI and a secret key field of a string called secret (shocking).
+
 ## To-do:
 ### Back-end:
 1. build first room
 
-### Front-end
-1. Get rooms upon visiting and update roomlist upon adding room
+
+> Author: Shahar Duany

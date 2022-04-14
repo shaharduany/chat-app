@@ -2,25 +2,37 @@ import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Header from "./components/Header";
 import JoinPage from "./components/signing-page";
 import MainPage from "./components/MainPage";
 import styles from "./styles";
 import paths from "./routes";
 import Logout from "./components/Logout";
+import { requestRooms } from "./scripts/rooms-scripts";
+import { updateToken } from "./store/user/user";
+import { updateRooms } from "./store/rooms/rooms";
 
 const PATHS = paths();
 
 function App() {
+  const dispatch = useDispatch();
+
   const style = styles();
 
   const user = useSelector((state) => state.user);
   const rooms = useSelector((state) => state.rooms);
 
-  useEffect(() => {
-    
-  }, [user, rooms]);
+  useEffect(async () => {
+    let data = await requestRooms(user);
+    if(data.rooms){
+      dispatch(updateRooms(data.rooms));
+    }
+
+    if(data.accessToken){
+      dispatch(updateToken(data.accessToken));
+    }
+  }, [user]);
 
   return (
     <div className="app-wrapper" style={style.app}>

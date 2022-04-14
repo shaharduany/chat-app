@@ -3,6 +3,13 @@ const authConfig = require("../../config/auth-config");
 const MESSAGES = require('../messages');
 const User = require("../models/User");
 
+function getToken(user) {
+    return jwt.sign({ id: user._id }, authConfig.secret, {
+      expiresIn: authConfig.oneDay,
+    });
+}
+  
+
 const verifyToken = async(req, res, next) => {
     let token = req.headers["x-access-token"];
     
@@ -36,4 +43,5 @@ const isUser = async(req, res, next) => {
 module.exports.authJwt = {
     verifyToken,
     isUser,
+    getToken,
 }

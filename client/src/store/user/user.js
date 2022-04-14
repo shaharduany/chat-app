@@ -1,6 +1,7 @@
 
 const ADD_USER = "ADD_USER";
 const LOGOUT_USER = "LOGOUT_USER";
+const UPDATE_TOKEN = "UPDATE_TOKEN";
 
 const DEFAULT_VALUES = {
     username: "",
@@ -24,6 +25,13 @@ export function logoutUser(){
     });
 }
 
+export function updateToken(accessToken){
+    return {
+        type: UPDATE_TOKEN,
+        accessToken,
+    }
+}
+
 function user(state = defaultUser, action){
     switch(action.type){
         case ADD_USER:
@@ -40,6 +48,17 @@ function user(state = defaultUser, action){
             localStorage.removeItem('user');
             localStorage.removeItem('rooms');
             return DEFAULT_VALUES;
+        case UPDATE_TOKEN: 
+            const val = {
+                id: state.id,
+                logged: state.logged,
+                username: state.username,
+                accessToken: action.accessToken,
+                email: state.email,
+            }
+            localStorage.setItem('user', JSON.stringify(val));
+            
+            return val;
         default:
             return state;
     }

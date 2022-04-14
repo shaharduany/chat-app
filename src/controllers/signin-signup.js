@@ -92,8 +92,6 @@ module.exports.signin = async (req, res) => {
       message: MESSAGES.INVALID_PASSWORD,
     });
   }
-
-  let rooms = await convertIdsToRooms(user.rooms); 
   let token = getToken(user);
 
   let vals = {
@@ -102,7 +100,7 @@ module.exports.signin = async (req, res) => {
     status: 200,
     username: user.username,
     email: user.email,
-    rooms: rooms,
+    rooms: user.rooms,
     accessToken: token,
   };
 

@@ -7,6 +7,8 @@ const ROUTES = {
     JOIN_ROOM: "/api/joinroom",
     SEARCH_ROOM: "/api/searchroom",
     POST_MESSAGE: "/api/postmessage",
+    REQUEST_ROOMS: "/api/requestrooms",
+    
 }
 
 module.exports = ROUTES;

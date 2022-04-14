@@ -53,3 +53,16 @@ export async function postMessage(userId, sender, content, roomId){
 
     return data;
 }
+
+export async function requestRooms(user){
+    const userId = user.id;
+    const headers = authHeader();
+    
+    const values = {
+        userId,
+    }
+
+    const res = await axios.post(ROUTES.REQUEST_ROOMS, values, {headers, });
+
+    return res.data;
+}

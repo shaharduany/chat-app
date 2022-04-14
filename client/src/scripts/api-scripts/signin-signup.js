@@ -38,7 +38,6 @@ export async function login(email, password){
     if(okRespomnse(res)){
         data.values = assignUser(data);
     }
-    console.log(data.values);
 
     return data;
 }

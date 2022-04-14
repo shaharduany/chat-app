@@ -6,7 +6,7 @@ const ROUTES = require("./routes");
 const authConfig = require('../config/auth-config');
 const { signin, signup, checkDuplicatedEmail, logout } = require("./controllers/signin-signup");
 const { authJwt } = require("./middleware/auth-jwt");
-const { getMessages, searchRoom, addToRoom, postMessage } = require("./controllers/chats");
+const { getMessages, searchRoom, addToRoom, postMessage, getRooms } = require("./controllers/chats");
 
 class Server{
     constructor(){
@@ -51,6 +51,7 @@ class Server{
         this.app.post(ROUTES.SEARCH_ROOM, searchRoom);
         this.app.post(ROUTES.JOIN_ROOM, authJwt.isUser, authJwt.verifyToken, addToRoom);
         this.app.post(ROUTES.POST_MESSAGE, authJwt.verifyToken, authJwt.isUser, postMessage);
+        this.app.post(ROUTES.REQUEST_ROOMS, authJwt.isUser, authJwt.verifyToken, getRooms);
     }
 
     listen(){

@@ -2,6 +2,7 @@ const MESSAGES = require('../messages');
 const Room = require('../models/Room');
 const Message = require('../models/Message');
 const User = require('../models/User');
+const { authJwt } = require('../middleware/auth-jwt');
 
 async function findRoomById(roomId){
     return await Room.findById(roomId);
@@ -55,22 +56,45 @@ async function lookUpRoom(roomName){
     return await Room.findOne({name: roomName});
 }
 
-module.exports.getChats = async (req, res, next) =>{
-    const rooms  = req.body.rooms;
-
-    let collection = await fillAllRooms(rooms, res);
+async function getRoomInfo(roomId){
+    const room = await Room.findById(roomId);
     
-    let builtRooms = [];
+    return {
+        name: room.name,
+        roomId,
+        guests: room.guests,
+        messages: room.messages,
+    };
+}
 
-    for(let room of collection){
-        builtRooms.push(fillUpMessages(room));    
+module.exports.getRooms = async(req, res, next) => {
+    const userId = req.body.userId;
+
+    const user = await User.findById(userId);
+
+    if(!user){
+        res.status(404).send({
+            message: MESSAGES.NOT_FOUND,
+            accessToken: null,
+        });
+        
+        return;
     }
 
-    if(collection.length > 0){
-        res.status(200).send({rooms: builtRooms });
-    } else {
-        res.status(404).send({message: MESSAGES.ROOMS_NOT_FOUND});
+    const accessToken = authJwt.getToken(user);
+
+    const rooms = [];
+
+    for(let roomId of user.rooms){
+        const room = await getRoomInfo(roomId);
+        rooms.push(room);
     }
+
+    res.status(200).send({
+        message: MESSAGES.PROCESSED,
+        rooms,
+        accessToken,
+    });
 }
 
 module.exports.searchRoom = async(req, res, next) => {
