@@ -23,10 +23,8 @@ export default function Room(props) {
 
   return (
     <div>
-      <h3>{room.name}</h3>
-
       <Card>
-        <Card.Header>{room.name}</Card.Header>
+        <Card.Title>{room.name}</Card.Title>
         <Card.Body>
           <div style={style.roomMsg}>
           {room.messages &&

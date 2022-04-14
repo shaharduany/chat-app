@@ -39,7 +39,7 @@ function user(state = defaultUser, action){
         case LOGOUT_USER:
             localStorage.removeItem('user');
             localStorage.removeItem('rooms');
-            return defaultUser;
+            return DEFAULT_VALUES;
         default:
             return state;
     }

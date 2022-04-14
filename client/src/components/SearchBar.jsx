@@ -19,7 +19,7 @@ export default function SearchBar(props) {
         event.preventDefault();
         console.log(user.id);
         let data = await joinRoom(user.id, search);
-        console.log(data);
+        setSearch("");
     }
 
   return <div style={style.searchBar}>

@@ -5,6 +5,6 @@ export default function paths(){
         join: "/join",
         main: "/main",
         account: "/account",
-        
+        logout: "/logout",
     }
 }

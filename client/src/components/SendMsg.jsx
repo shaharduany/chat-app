@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import { Button, Form, FormControl, InputGroup } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { postMessage } from '../scripts/rooms-scripts';
+import styles from '../styles';
 
 export default function SendMessage(props) {
     const dispatch = useDispatch();
+
+    const style = styles();
 
     const user = useSelector(state => state.user);
     const room = useSelector(state => state.room);
@@ -25,14 +28,14 @@ export default function SendMessage(props) {
     }
 
     return (<div>
-        <Form>
+        <Form style={style.sendMsg}>
             <InputGroup>
                 <FormControl 
                 placeholder='Enter your message'
                 value={content}
                 onChange={contentChange}
                 />
-                <Button variant='praimary' onClick={sendClick}>SEND</Button>
+                <Button variant='primary' onClick={sendClick}>SEND</Button>
             </InputGroup>
         </Form>
     </div>)

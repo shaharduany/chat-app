@@ -20,9 +20,9 @@ export default function RoomList(props) {
       name: select.name,
       messages: data.messages,
       id: select.id,
-    }
+    };
     console.log(data.messages);
-    
+
     console.log(obj);
     dispatch(selectRoom(obj));
   };
@@ -31,17 +31,20 @@ export default function RoomList(props) {
 
   return (
     <div style={style.roomListDiv}>
-      <h3>ROOMS</h3>
-      <ListGroup>
+      <h3>Your Rooms</h3>
+      <hr />
+      <ListGroup style={style.roomList}>
         {rooms &&
           rooms.map((value, index) => (
-            <ListGroup.Item
-              action
-              onClick={() => roomClick(value)}
-              key={value.id}
-            >
-              {value.name}
-            </ListGroup.Item>
+            <div style={style.roomItem}>
+              <ListGroup.Item
+                action
+                onClick={() => roomClick(value)}
+                key={value.id}
+              >
+                {value.name}
+              </ListGroup.Item>
+            </div>
           ))}
       </ListGroup>
     </div>

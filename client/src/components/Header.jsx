@@ -10,19 +10,11 @@ import styles from '../styles';
 export default function Header(props){
     const style = styles();
     const PATHS = paths();
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
-
     const user = useSelector(state => state.user);
 
-    const handleLogoutClick = async (event) => {
-        let action = logoutUser();
-        dispatch(action);
-        navigate(PATHS.homepage);
-    }
 
     useEffect(() => {
-
+        
     }, [user]);
 
     return (<div className='nav-div' style={style.navDiv}>
@@ -52,7 +44,7 @@ export default function Header(props){
                 {user.logged && 
                     <Button
                     variant='dark'
-                    onClick={handleLogoutClick}
+                    href={PATHS.logout}
                     >
                         LOGOUT
                     </Button>

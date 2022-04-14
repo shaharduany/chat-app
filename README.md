@@ -17,8 +17,7 @@ This is a single-page, chat application, with a ReactJS front and Node.js back.
 
 ## To-do:
 ### Back-end:
-1. Build first room
-
+1. build first room
 
 ### Front-end
-1. Set logout to navigate
+1. Get rooms upon visiting and update roomlist upon adding room

@@ -19,10 +19,10 @@ export default function MainPage(props){
         }
         <SearchBar />
         <Row>
-            <Col md={3}>
+            <Col md={4}>
                 <RoomList />
             </Col>
-            <Col md={9}>
+            <Col md={8}>
                 <Room />
             </Col>
         </Row>

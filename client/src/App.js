@@ -8,6 +8,7 @@ import JoinPage from "./components/signing-page";
 import MainPage from "./components/MainPage";
 import styles from "./styles";
 import paths from "./routes";
+import Logout from "./components/Logout";
 
 const PATHS = paths();
 
@@ -32,6 +33,7 @@ function App() {
           ></Route>
           <Route exact path={PATHS.join} element={<JoinPage />}></Route>
           <Route exact path={PATHS.account} element={<h1>BUILD IT</h1>}></Route>
+          <Route exact path={PATHS.logout} element={<Logout />}></Route>
         </Routes>
       </Router>
       <footer  style={style.footer}>Credits: Shahar Duany</footer>

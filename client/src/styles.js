@@ -12,11 +12,22 @@ export default function styles() {
 			textAlign: "start",
 		},
 		roomMsg: {
-			textAlign: "start",
 			height: "200px",
 			padding: "5px",
 			overflowY: "scroll",
 			
+		},
+		roomList: {
+			textAlign: "start",
+			padding: "50px",
+		},
+		roomItem: {
+			padding: "5px",
+			border: "solid 2px",
+		},
+		sendMsg: {
+			padding: "5px",
+			border: "solid 2px",
 		},
 		footer: {
 			backgroundColor: "black",
