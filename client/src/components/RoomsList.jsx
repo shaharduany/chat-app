@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { ListGroup } from "react-bootstrap";
+import { Card, ListGroup } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { getMessages } from "../scripts/rooms-scripts";
 import { selectRoom } from "../store/room";
@@ -31,22 +31,25 @@ export default function RoomList(props) {
 
   return (
     <div style={style.roomListDiv}>
-      <h3>Your Rooms</h3>
-      <hr />
-      <ListGroup style={style.roomList}>
-        {rooms &&
-          rooms.map((value, index) => (
-            <div style={style.roomItem} key={index}>
-              <ListGroup.Item
-                action
-                onClick={() => roomClick(value)}
-                key={value.id}
-              >
-                {value.name}
-              </ListGroup.Item>
-            </div>
-          ))}
-      </ListGroup>
+      <Card bg="info">
+        <Card.Header>Your rooms</Card.Header>
+        <Card.Body>
+          <ListGroup style={style.roomList}>
+            {rooms &&
+              rooms.map((value, index) => (
+                <div style={style.roomItem} key={index}>
+                  <ListGroup.Item
+                    action
+                    onClick={() => roomClick(value)}
+                    key={value.id}
+                  >
+                    {value.name}
+                  </ListGroup.Item>
+                </div>
+              ))}
+          </ListGroup>
+        </Card.Body>
+      </Card>
     </div>
   );
 }

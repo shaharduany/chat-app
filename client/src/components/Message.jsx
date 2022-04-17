@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Card } from "react-bootstrap";
 import { useSelector } from "react-redux";
 
 export default function Message(props) {
@@ -6,6 +7,8 @@ export default function Message(props) {
 
   const user = useSelector(state => state.user);
 
+  const PRIMARY = "light";
+  const SECONDARY = "info";
 
   const startAlign = {
     textAlign: "start",
@@ -14,25 +17,29 @@ export default function Message(props) {
   const endAlign = {
     textAlign: "end",
   };
-
+  //C5D8A4
   const sender = message.sender;
   const content = message.content;
   const date = message.date;
+  const time = date.split(",")[1];
   const [style, setStyle] = useState(startAlign);
-  
+  const [background, setBackground] = useState(SECONDARY);
   useEffect(() => {
     if(sender === user.username){
       setStyle(endAlign);
-  
+      setBackground(PRIMARY);
     } else {
       setStyle(startAlign);
+      setBackground(SECONDARY);
     }
   }, []);
 
   return (
-    <div style={style}>
-      <h6><b>{sender}</b> @ {date}</h6>
-      <p>{content}</p>
-    </div>
+      <Card style={style} bg={background}>
+        <Card.Body>
+          <h6>{sender} @ {time}</h6>
+          <p>{content}</p>
+        </Card.Body>
+      </Card>
   );
 }

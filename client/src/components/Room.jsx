@@ -13,7 +13,7 @@ export default function Room(props) {
 
   return (
     <div>
-      <Card>
+      <Card bg="info">
         <Card.Title>{room.name}</Card.Title>
         <Card.Body>
           <div style={style.roomMsg}>
