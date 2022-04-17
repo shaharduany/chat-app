@@ -32,13 +32,6 @@ export default function Header(props){
                         JOIN US
                     </Nav.Link>
                 }
-                {user.logged &&
-                    <Nav.Link
-                    href={PATHS.account}
-                    >
-                        ACCOUNT
-                    </Nav.Link>
-                }
                 {user.logged && 
                     <Button
                     variant='dark'

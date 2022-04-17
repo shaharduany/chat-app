@@ -41,8 +41,12 @@ export default function room(state = defaultRoom, action){
         case ADD_MESSAGE:
             break;
         case UPDATE:
-            state.messages = action.messages;
-            return state;
+            
+            return {
+                id: state.id,
+                name: state.name,
+                messages: action.messages,
+            };
         default:
             return state;
     }
