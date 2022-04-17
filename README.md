@@ -24,9 +24,8 @@ The database is divided into 3 collections in a NoSQL database, I used a cloud b
 1. You need nodeman and concurrently installed.
 2. Create a default.json file at the config folder and set up a field with the database connection link called mongoURI and a secret key field of a string called secret (shocking).
 
-## To-do:
-### Back-end:
-1. build first room
 
+## todo
+1. update chat automatically
 
 > Author: Shahar Duany

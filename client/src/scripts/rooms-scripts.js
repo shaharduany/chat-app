@@ -20,6 +20,7 @@ export async function joinRoom(userId, roomName){
     return data;
 }
 
+
 export async function getMessages(user, room){
     const HEADERS = authHeader();
 

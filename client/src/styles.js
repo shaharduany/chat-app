@@ -10,23 +10,17 @@ export default function styles() {
 		},
 		room: {
 			textAlign: "start",
-			height: "90%",
-			width: "90%",
-			overflowY: "scroll",
 			padding: "50px",
 		},
 		roomMsg: {
 			backgroundColor: "#000FFC6",
-			height: "75%",
+			height: "500px",
 			padding: "5px",
 			overflowY: "scroll",
 			
 		},
 		roomList: {
 			textAlign: "start",
-			height: "90%",
-			width: "90%",
-			overflowY: "scroll",
 			padding: "50px",
 		},
 		roomItem: {
