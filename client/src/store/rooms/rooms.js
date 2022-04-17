@@ -2,6 +2,21 @@ const ADD_ROOM = "ADD_ROOM";
 const LEAVE_ROOM = "LEAVE_ROOM";
 const UPDATE_ROOMS = "UPDATE_ROOMS";
 
+function spreadRooms(rooms){
+    let arr = [];
+    for(let room of rooms){
+        let obj = {
+            id: room.roomId,
+            name: room.name,
+            messages: room.messages,
+            guests: room.guessts,
+        };
+        arr.push(obj);
+    }
+
+    return arr;
+}
+
 export function updateRooms(rooms){
     return {
         type: UPDATE_ROOMS, 
@@ -39,14 +54,14 @@ function rooms(state = DEFAULT, action){
                 name: action.room.name,
                 guests: action.room.guests,
                 messages: action.room.messages,
-                id: action.room.id,
+                id: action.room.roomId,
             }];
             return arr;
         case LEAVE_ROOM:
             //Fill it up later
             break;
         case UPDATE_ROOMS: 
-            return action.rooms;
+            return spreadRooms(action.rooms);
         default:
             return state;
     }

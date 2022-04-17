@@ -4,7 +4,7 @@
 
 This is a single-page, mobile-first, chat application, with a ReactJS front and Node.js back.
 
- It has authentication feature that updates every time there's a login or a visit to the website using JWT, 3 states managed with Redux.
+ It has authentication feature that updates every time there's a login or a visit to the website using JWT, 4 states managed with Redux.
 
 The database is divided into 3 collections in a NoSQL database, I used a cloud based database.
 

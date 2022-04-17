@@ -18,8 +18,6 @@ export default function Message(props) {
   const sender = message.sender;
   const content = message.content;
   const date = message.date;
-
-  const [align, setAlign] = useState(false);
   const [style, setStyle] = useState(startAlign);
   
   useEffect(() => {

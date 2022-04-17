@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import paths from "../routes";
 import { login } from "../scripts/api-scripts/signin-signup";
 import { addRoom } from "../store/rooms/rooms";
+import { updateToken } from "../store/token";
 import styles from "../styles";
 
 export default function Login(props) {
@@ -46,11 +47,11 @@ export default function Login(props) {
 
     let data = await login(email, password);
     const rooms = data.rooms;
-    console.log(rooms);
-
+    
     if (data.status < 400) {
       dispatch(data.values);
-      updateRooms(rooms);  
+      updateRooms(rooms);
+      dispatch(updateToken(data.values.accessToken));
       setTimeout(() => {
         navigate(PATHS.homepage);
       }, 5000);

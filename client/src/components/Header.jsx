@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react';
 import { Navbar, Nav, NavbarBrand, Button } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import paths from '../routes';
-import { logoutUser } from '../store/user/user';
 import styles from '../styles';
 
 

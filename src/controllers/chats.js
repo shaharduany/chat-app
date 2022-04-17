@@ -144,7 +144,7 @@ module.exports.addToRoom = async(req, res, next) => {
 
 module.exports.getMessages = async(req, res, next) =>{
     const roomId = req.body.roomId;
-
+    
     if(roomId === 0){
         res.status(404).send({
             message: MESSAGES.ROOMS_NOT_FOUND,

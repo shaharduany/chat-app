@@ -10,7 +10,7 @@ import styles from "./styles";
 import paths from "./routes";
 import Logout from "./components/Logout";
 import { requestRooms } from "./scripts/rooms-scripts";
-import { updateToken } from "./store/user/user";
+import { updateToken } from "./store/token";
 import { updateRooms } from "./store/rooms/rooms";
 
 const PATHS = paths();
@@ -21,17 +21,12 @@ function App() {
   const style = styles();
 
   const user = useSelector((state) => state.user);
-  const rooms = useSelector((state) => state.rooms);
-
+ 
   useEffect(async () => {
     let data = await requestRooms(user);
-    if(data.rooms){
-      dispatch(updateRooms(data.rooms));
-    }
-
-    if(data.accessToken){
-      dispatch(updateToken(data.accessToken));
-    }
+    dispatch(updateRooms(data.rooms));
+    dispatch(updateToken(data.accessToken));
+    console.log(data);
   }, [user]);
 
   return (

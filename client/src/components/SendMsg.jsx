@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { Button, Form, FormControl, InputGroup } from 'react-bootstrap';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { postMessage } from '../scripts/rooms-scripts';
 import styles from '../styles';
 
 export default function SendMessage(props) {
-    const dispatch = useDispatch();
-
+  
     const style = styles();
 
     const user = useSelector(state => state.user);
@@ -22,7 +21,7 @@ export default function SendMessage(props) {
     const sendClick = async(event) => {
         event.preventDefault();
         
-        const req = await postMessage(user.id, user.username, content, room.id);
+        await postMessage(user.id, user.username, content, room.id);
 
         setContent("");
     }

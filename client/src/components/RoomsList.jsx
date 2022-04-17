@@ -36,7 +36,7 @@ export default function RoomList(props) {
       <ListGroup style={style.roomList}>
         {rooms &&
           rooms.map((value, index) => (
-            <div style={style.roomItem}>
+            <div style={style.roomItem} key={index}>
               <ListGroup.Item
                 action
                 onClick={() => roomClick(value)}

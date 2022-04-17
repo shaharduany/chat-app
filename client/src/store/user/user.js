@@ -40,25 +40,14 @@ function user(state = defaultUser, action){
                 username: action.user.username,
                 logged: action.user.logged,
                 email: action.user.email,
-                accessToken: action.accessToken,
             };
             localStorage.setItem('user', JSON.stringify(values));
             return values;
         case LOGOUT_USER:
             localStorage.removeItem('user');
             localStorage.removeItem('rooms');
+            localStorage.removeItem('token')
             return DEFAULT_VALUES;
-        case UPDATE_TOKEN: 
-            const val = {
-                id: state.id,
-                logged: state.logged,
-                username: state.username,
-                accessToken: action.accessToken,
-                email: state.email,
-            }
-            localStorage.setItem('user', JSON.stringify(val));
-            
-            return val;
         default:
             return state;
     }

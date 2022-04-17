@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import paths from '../routes';
 import { signup } from '../scripts/api-scripts/signin-signup';
 import styles from '../styles';
+import { updateToken } from '../store/token';
 
 export default function Register(props){
     const style = styles();
@@ -57,6 +58,7 @@ export default function Register(props){
             let val = await signup(email, password, username);
             if(val.status === 200){
                 dispatch(val.values);
+                dispatch(updateToken(val.values.accessToken));
                 navigate(PATHS.homepage);
             } else {
                 setMessage("Email is taken");
